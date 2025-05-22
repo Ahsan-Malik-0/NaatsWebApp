@@ -63,7 +63,7 @@ else
 
 <div class="d-flex gap-3">
     <!-- Profile Button -->
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "NK", new { id = Session["id"], FormMethod.Get }))
     {
         <button class="btn btn-success">Profile</button>
     }

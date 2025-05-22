@@ -190,7 +190,7 @@ namespace NaatsWebApp.Controllers
             }
         }
 
-        [HttpPost]
+
         public ActionResult Delete(int id)
         {
             try
