@@ -1,0 +1,91 @@
+﻿@model List<NaatsWebApp.Models.NaatKhwaan>
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<h1>Dashboard</h1>
+@*<h2>@Session["id"]</h2>*@
+<h3>Welcome @Session["name"]</h3>
+
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>City</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var n in Model)
+            {
+                <tr>
+                    <td>@n.id</td>
+                    <td>@n.fullname</td>
+                    <td>@n.city</td>
+                    <td>@n.gender</td>
+                    <td>@n.email</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "NK", new { id = n.id })" class="btn btn-sm btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "NK", new { id = n.id }, FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete this record?');" }))
+                        {
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        }
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available.</p>
+}
+
+
+
+<div class="d-flex gap-3">
+    <!-- Profile Button -->
+    @using (Html.BeginForm())
+    {
+        <button class="btn btn-success">Profile</button>
+    }
+
+    <!-- Naats Button -->
+    @using (Html.BeginForm())
+    {
+        <button class="btn btn-success">Naats</button>
+    }
+
+    <!-- Album Button -->
+    @using (Html.BeginForm())
+    {
+        <button class="btn btn-success">Album</button>
+    }
+
+    <!-- Logout Button -->
+    @using (Html.BeginForm("Logout", "NK", FormMethod.Post))
+    {
+        <button type="submit" class="btn btn-danger ms-auto">Logout</button>
+    }
+</div>
+
+
+

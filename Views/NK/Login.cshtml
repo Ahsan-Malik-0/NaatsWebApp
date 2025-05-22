@@ -1,0 +1,44 @@
+﻿@using (Html.BeginForm("Login", "NK", FormMethod.Post))
+{
+    <!-- Email Field -->
+    <div class="form-group">
+        @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Editor("email", new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <br />
+
+    <!-- Password Field -->
+    <div class="form-group">
+        @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Editor("pass", new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="d-flex">
+        <!-- Login Button -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="action" value="Login" class="btn btn-success" />
+            </div>
+        </div>
+
+        <!-- Signin Button -->
+        <div class="form-group mx-2">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="action" value="Signin" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Display Result or Error -->
+<div>
+    @ViewBag.Result
+    @ViewBag.Error
+</div>

@@ -1,0 +1,46 @@
+﻿@model NaatsWebApp.Models.NaatKhwaan
+
+
+@using (Html.BeginForm("Edit", "NK", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.id) <!-- optional if you need the id -->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fullname, "Name")
+        @Html.TextBoxFor(model => model.fullname, Model.fullname, new { @class = "form-control" })
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.city, "City")
+        @Html.TextBoxFor(model => model.city, Model.city, new { @class = "form-control" })
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.gender, "Gender")
+        <br />
+        @Html.RadioButtonFor(model => model.gender, "M") <span>Male</span>
+        @Html.RadioButtonFor(model => model.gender, "F") <span>Female</span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, "Email")
+        @Html.TextBoxFor(model => model.email, Model.email, new { @class = "form-control" })
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.pwd, "Password")
+        @Html.TextBoxFor(model => model.pwd, Model.pwd, new { @class = "form-control" })
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Update</button>
+}
