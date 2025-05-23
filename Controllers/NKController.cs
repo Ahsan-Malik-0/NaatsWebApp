@@ -152,19 +152,15 @@ namespace NaatsWebApp.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            db.OpenConnection();
-            string query = $"SELECT * FROM naatKhwaan WHERE id = {id}";
-            SqlDataReader sdr = db.getData(query);
-            sdr.Read();
-            NaatKhwaan n = new NaatKhwaan 
-            {
-                fullname = sdr["name"].ToString(),
-                city = sdr["city"].ToString(),
-                gender = Convert.ToChar(sdr["gender"]),
-                email = sdr["email"].ToString(),
-                pwd = sdr["pass"].ToString()
-            };
+            NaatKhwaan n = NKObject(id);
             return View(n);
+        }
+
+        [HttpGet]
+        public ActionResult MyProfile(int id)
+        {
+            NaatKhwaan n = NKObject(id);
+            return View("Profile", n); // You can still return the "Profile" view
         }
 
         [HttpPost]
@@ -218,6 +214,25 @@ namespace NaatsWebApp.Controllers
             Session.Clear();         // Clear all session variables
             Session.Abandon();       // End the current session
             return RedirectToAction("Login"); // Redirect to login page
+        }
+
+
+        // Return naat khwaan on the basis of id
+        public NaatKhwaan NKObject(int id)
+        {
+            db.OpenConnection();
+            string query = $"SELECT * FROM naatKhwaan WHERE id = {id}";
+            SqlDataReader sdr = db.getData(query);
+            sdr.Read();
+            NaatKhwaan n = new NaatKhwaan
+            {
+                fullname = sdr["name"].ToString(),
+                city = sdr["city"].ToString(),
+                gender = Convert.ToChar(sdr["gender"]),
+                email = sdr["email"].ToString(),
+                pwd = sdr["pass"].ToString()
+            };
+            return n;
         }
 
     }

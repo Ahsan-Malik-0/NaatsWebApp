@@ -185,6 +185,7 @@
     <Content Include="Views\NK\Dashboard.cshtml" />
     <Content Include="Views\NK\Edit.cshtml" />
     <Content Include="Views\NK\Naat.cshtml" />
+    <Content Include="Views\NK\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

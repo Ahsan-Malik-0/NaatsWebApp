@@ -1,0 +1,38 @@
+﻿@model NaatsWebApp.Models.NaatKhwaan
+
+@{
+    ViewBag.Title = "Your Profile";
+}
+
+<h2>Your Profile</h2>
+<div class="card shadow p-4 mt-3" style="max-width: 500px;">
+    <div class="form-group mb-3">
+        <strong>Name:</strong>
+        <div>@Model.fullname</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <strong>City:</strong>
+        <div>@Model.city</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <strong>Gender:</strong>
+        <div>@(Model.gender == 'M' ? "Male" : "Female")</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <strong>Email:</strong>
+        <div>@Model.email</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <strong>Password:</strong>
+        <div>@Model.pwd</div> <!-- Optional: hide if needed -->
+    </div>
+
+    <div class="mt-4">
+        @* OR simply use an anchor link *@
+        <a href="@Url.Action("Dashboard", "NK")" class="btn btn-primary">Go to Dashboard</a>
+    </div>
+</div>

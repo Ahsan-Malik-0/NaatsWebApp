@@ -42,16 +42,25 @@
                     <td>
                         <a href="@Url.Action("Edit", "NK", new { id = n.id })" class="btn btn-sm btn-primary">Edit</a>
                     </td>
-                    <td>
-                        @using (Html.BeginForm("Delete", "NK", new { id = n.id }, FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete this record?');" }))
-                        {
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                        }
-                    </td>
+                    @if (Session["id"].ToString() == n.id.ToString())
+                    {
+                        <td>
+                            <button type="submit" class="btn btn-sm btn-danger" disabled>Delete</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @using (Html.BeginForm("Delete", "NK", new { id = n.id }, FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete this record?');" }))
+                            {
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            }
+                        </td>
+                    }
                 </tr>
-
             }
         </tbody>
+
     </table>
 }
 else
@@ -63,10 +72,8 @@ else
 
 <div class="d-flex gap-3">
     <!-- Profile Button -->
-    @using (Html.BeginForm("Edit", "NK", new { id = Session["id"], FormMethod.Get }))
-    {
-        <button class="btn btn-success">Profile</button>
-    }
+    <a href="@Url.Action("MyProfile", "NK", new { id = Session["id"] })" class="btn btn-success">Profile</a>
+
 
     <!-- Naats Button -->
     @using (Html.BeginForm())
