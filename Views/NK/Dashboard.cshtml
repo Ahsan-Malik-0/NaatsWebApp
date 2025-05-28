@@ -26,6 +26,7 @@
                 <th>City</th>
                 <th>Gender</th>
                 <th>Email</th>
+                <th>View Profile</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -39,6 +40,9 @@
                     <td>@n.city</td>
                     <td>@n.gender</td>
                     <td>@n.email</td>
+                    <td>
+                        <a href="@Url.Action("MyProfile", "NK", new { id = n.id })" class="btn btn-sm btn-success">Profile</a>
+                    </td>
                     <td>
                         <a href="@Url.Action("Edit", "NK", new { id = n.id })" class="btn btn-sm btn-primary">Edit</a>
                     </td>
@@ -71,28 +75,31 @@ else
 
 
 <div class="d-flex gap-3">
-    <!-- Profile Button -->
-    <a href="@Url.Action("MyProfile", "NK", new { id = Session["id"] })" class="btn btn-success">Profile</a>
+
+    <div class="me-auto d-flex gap-3">
+        @using (Html.BeginForm())
+        {
+            <button class="btn btn-success">Naats</button>
+        }
+
+        @using (Html.BeginForm("CreateAlbum", "Album", FormMethod.Get))
+        {
+            <button class="btn btn-success">Create Album</button>
+        }
+
+        @using (Html.BeginForm("AllAlbums", "Album", new { id = Session["id"] }, FormMethod.Get))
+        {
+            <button class="btn btn-success">All Album</button>
+        }
 
 
-    <!-- Naats Button -->
-    @using (Html.BeginForm())
-    {
-        <button class="btn btn-success">Naats</button>
-    }
-
-    <!-- Album Button -->
-    @using (Html.BeginForm())
-    {
-        <button class="btn btn-success">Album</button>
-    }
-
-    <!-- Logout Button -->
-    @using (Html.BeginForm("Logout", "NK", FormMethod.Post))
-    {
-        <button type="submit" class="btn btn-danger ms-auto">Logout</button>
-    }
+        @using (Html.BeginForm("Logout", "NK", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-danger">Logout</button>
+        }
+    </div>
 </div>
+
 
 
 

@@ -120,11 +120,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NKController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Models\DBHelper.cs" />
     <Compile Include="Models\NaatKhwaan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +188,8 @@
     <Content Include="Views\NK\Edit.cshtml" />
     <Content Include="Views\NK\Naat.cshtml" />
     <Content Include="Views\NK\Profile.cshtml" />
+    <Content Include="Views\Album\AllAlbums.cshtml" />
+    <Content Include="Views\Album\CreateAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

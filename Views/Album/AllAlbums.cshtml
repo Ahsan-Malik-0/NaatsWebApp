@@ -1,0 +1,41 @@
+﻿@model List<NaatsWebApp.Models.Album>
+
+@{
+    ViewBag.Title = "Your Albums";
+}
+
+<h2 class="mb-3">Your Albums</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No albums found.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Album No</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Cover Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in Model)
+            {
+                <tr>
+                    <td>@album.ano</td>
+                    <td>@album.title</td>
+                    <td>@album.year</td>
+                    <td>
+                        <img src="@album.imgPath" alt="Cover" width="100" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a href="@Url.Action("Dashboard", "NK")" class="btn btn-info">Dashboard</a>
+
