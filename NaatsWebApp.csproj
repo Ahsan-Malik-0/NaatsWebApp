@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NaatController.cs" />
     <Compile Include="Controllers\NKController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -129,6 +130,7 @@
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\DBHelper.cs" />
     <Compile Include="Models\NaatKhwaan.cs" />
+    <Compile Include="Models\Naats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +160,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
@@ -190,6 +193,8 @@
     <Content Include="Views\NK\Profile.cshtml" />
     <Content Include="Views\Album\AllAlbums.cshtml" />
     <Content Include="Views\Album\CreateAlbum.cshtml" />
+    <Content Include="Views\Naat\CreateNaat.cshtml" />
+    <Content Include="Views\Naat\AllNaats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

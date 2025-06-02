@@ -77,7 +77,7 @@ else
 <div class="d-flex gap-3">
 
     <div class="me-auto d-flex gap-3">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("CreateNaat", "Naat", FormMethod.Get))
         {
             <button class="btn btn-success">Naats</button>
         }
@@ -96,6 +96,16 @@ else
         @using (Html.BeginForm("Logout", "NK", FormMethod.Post))
         {
             <button type="submit" class="btn btn-danger">Logout</button>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <button id="alertBtn" type="button" class="btn btn-success">Alert</button>
+        }
+
+        <!-- Link external JavaScript file -->
+        @section Scripts {
+            <script src="~/Scripts/dashboard.js"></script>
         }
     </div>
 </div>

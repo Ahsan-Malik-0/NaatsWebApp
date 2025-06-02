@@ -1,0 +1,20 @@
+﻿@model List<NaatsWebApp.Models.Naats>
+
+@{
+    ViewBag.Title = "AllNaats";
+}
+
+<h2>AllNaats</h2>
+
+<div>
+    <table>
+        @foreach(var naat in Model)
+        {
+            @naat = 1;
+            <tr>
+                <td id="n">@naat.</td>
+            </tr>
+        }
+    </table>
+</div>
+
