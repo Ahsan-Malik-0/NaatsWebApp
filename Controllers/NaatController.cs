@@ -18,7 +18,7 @@ namespace NaatsWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNaat(Naats obj)
+        public ActionResult CreateNaat(Naats obj, string albumNo)
         {
             if (ModelState.IsValid)
             {
@@ -28,10 +28,11 @@ namespace NaatsWebApp.Controllers
                 if (allowedExtensions.Contains(extension))
                 {
                     obj.nid = Session["id"].ToString();
-                    string filena = $"{obj.nid}_{obj.ano}{extension}";
-                    string serverPath = System.IO.Path.Combine(Server.MapPath("~/Assets/Audio"), filena);
+                    obj.ano = int.Parse(albumNo);
+                    obj.title = filename.Split('.')[0];
+                    string serverPath = System.IO.Path.Combine(Server.MapPath("~/Assets/Audio"), filename);
                     obj.audiofile.SaveAs(serverPath);
-                    obj.audiopath = "/Assets/Audio/" + filena;
+                    obj.audiopath = "/Assets/Audio/" + filename;
                     string query = $"INSERT INTO Naats (nid, ano, nno, title, audioPath) " +
                                    $"VALUES ('{obj.nid}', '{obj.ano}', '{obj.title}', '{obj.audiopath}')";
                     try

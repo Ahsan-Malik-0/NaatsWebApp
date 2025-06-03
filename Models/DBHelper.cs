@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 
 namespace NaatsWebApp.Models
 {
 	public class DBHelper
 	{
-        static string constr = @"Data Source=DESKTOP-ND2U4SJ\SQLEXPRESS;Initial Catalog=NaatsDB;Integrated Security=True";
+        static string constr = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
         public SqlConnection conn = new SqlConnection(constr);
         public SqlCommand cmd = null;
         public SqlDataReader sdr = null;
